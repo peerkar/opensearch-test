@@ -1,0 +1,19 @@
+### Maven ###
+target/
+dependency-reduced-pom.xml
+
+### IDEs ###
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+### Local secrets ###
+.env
+.envrc
+
+### macOS ###
+.DS_Store
