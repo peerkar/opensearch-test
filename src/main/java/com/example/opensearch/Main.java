@@ -1,5 +1,6 @@
 package com.example.opensearch;
 
+import com.example.opensearch.cluster.ClusterManager;
 import com.example.opensearch.configuration.OpenSearchConfiguration;
 import com.example.opensearch.connection.OpenSearchConnection;
 import com.example.opensearch.exception.OpenSearchConfigurationException;
@@ -19,6 +20,8 @@ public class Main {
     static void main() {
         try (OpenSearchConnection openSearchConnection = new OpenSearchConnection(OpenSearchConfiguration.fromEnv())) {
             System.out.println("The cluster version is " + getClusterVersion(openSearchConnection));
+
+            System.out.println("The cluster status is " + new ClusterManager(openSearchConnection.getClient()).getClusterStatus());
         } catch (OpenSearchConfigurationException openSearchConfigurationException) {
             log.error("Invalid configuration: {}", openSearchConfigurationException.getMessage());
             System.exit(1);
